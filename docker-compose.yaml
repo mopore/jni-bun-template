@@ -1,0 +1,14 @@
+services:
+  polly-streamer:
+    build: .
+    image: jni-home/jni-bun-template:latest
+    container_name: jni-bun-template
+    env_file:
+      - .env
+    # volumes:
+    #   - ./pollyCache:/app/pollyCache
+    # devices:
+    #   - "/dev/snd:/dev/snd"
+    # # Make the container user (bun) a member of the host's "audio" group (gid 29)
+    # group_add:
+    #   - "29"

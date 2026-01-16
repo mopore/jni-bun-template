@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug JNI Bun Template",
+            "type": "bun",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/index.ts",
+            "cwd": "${workspaceFolder}",
+            "stopOnEntry": false,
+            "watchMode": false,
+            "env": {
+                "TZ": "UTC",
+                "LOG_SETUP": "dev"
+            }
+        }
+    ]
+}

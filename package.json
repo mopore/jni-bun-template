@@ -1,0 +1,28 @@
+{
+  "name": "jni-bun-template",
+  "version": "0.1.0",
+  "description": "Project template for Bun projects w/ linting, VSC integration, docker, tests and sample code.",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.48.1",
+    "@typescript-eslint/parser": "^8.48.1",
+    "chai": "^6.2.1",
+    "eslint": "^9.39.1",
+    "mocha": "^11.7.5",
+    "testcontainers": "^11.9.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "scripts": {
+    "lint": "bun eslint . --ext .js,.ts,.tsx"
+  },
+  "dependencies": {
+    "winston": "^3.19.0"
+  }
+}
