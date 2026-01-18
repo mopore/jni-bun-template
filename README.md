@@ -1,7 +1,26 @@
-# jni-bun-template
+```
+     _ _   _ ___   ____              
+    | | \ | |_ _| | __ ) _   _ _ __  
+ _  | |  \| || |  |  _ \| | | | '_ \ 
+| |_| | |\  || |  | |_) | |_| | | | |
+ \___/|_| \_|___| |____/ \__,_|_| |_|
+                                     
+ _____                    _       _       
+|_   _|__ _ __ ___  _ __ | | __ _| |_ ___ 
+  | |/ _ \ '_ ` _ \| '_ \| |/ _` | __/ _ \
+  | |  __/ | | | | | |_) | | (_| | ||  __/
+  |_|\___|_| |_| |_| .__/|_|\__,_|\__\___|
+                   |_|                    
+```
 
-To install dependencies:
-```bash
+# JNI Bun Template
+This projects serves as a GitHub template project with Bun. It provides linting, tests, sample code
+and Docker integration.
+
+## Usage
+
+Install dependencies:
+```shell
 bun install
 ```
 
@@ -10,11 +29,10 @@ Prep a `.env` file in the project root:
 TEST_VAR = "Test value"
 ```
 
-To run:
-
+Run:
 ```shell
 LOG_SETUP=dev \
-  bun run src/index.ts "test arg value"
+  bun run src/index.ts "test arg value from cli"
 ```
 
 ## Linting
