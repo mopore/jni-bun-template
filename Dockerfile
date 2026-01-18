@@ -9,10 +9,12 @@ WORKDIR /app
 # Create a minimal Bun project
 COPY package.json bun.lock tsconfig.json eslint.config.js ./
 COPY src ./src
+COPY test-core ./test-core
 RUN bun install --frozen-lockfile --no-progress
 
 # Lint and run tests
 RUN bun run lint
+RUN LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-core/**/*.spec.ts'
 
 
 
