@@ -26,6 +26,6 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["src/**/*.ts", "test-core/**/*.ts", "test-integration/**/*.ts", "test-core/useMultipleCores.spec.ts.bun-incompatible"],
+  "include": ["src/**/*.ts", "test-core/**/*.ts", "test-integration/**/*.ts", "test-core/useMultipleCores.spec.ts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Option, none, optionalDefined, some } from "../src/shared/optional/optional.js";
+import { none, Option, optionalDefined, some } from "../src/shared/optional/optional";
 
 const someWithOptionDefined = (): Option<string> => optionalDefined("some");
 const optionWithSome = (): Option<string> => some("some");

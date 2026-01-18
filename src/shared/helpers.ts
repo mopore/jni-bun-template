@@ -1,6 +1,6 @@
 import fs from "fs";
-import { log } from "./logger/log.js";
-import { none, optionalDefined, type Option } from "./optional/optional.js";
+import { none, optionalDefined, type Option } from "./optional/optional";
+import { log } from "./logger/log";
 
 
 type PackageInfo = {

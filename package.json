@@ -24,8 +24,8 @@
   },
   "scripts": {
     "lint": "bun eslint . --ext .js,.ts,.tsx",
-    "test": "LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-core/**/*.spec.ts'",
-    "test:integration": "LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-integration/**/*.spec.ts' --timeout 20000"
+    "test": "LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-core/**/*.spec.ts' --exit",
+    "test:integration": "LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-integration/**/*.spec.ts' --timeout 20000 --exit"
   },
   "dependencies": {
     "winston": "^3.19.0"

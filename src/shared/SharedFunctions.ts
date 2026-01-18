@@ -1,5 +1,5 @@
-import { log } from "./logger/log.js";
-import { none, optionalDefined, type Option } from "./optional/optional.js";
+import { log } from "./logger/log";
+import { none, Option, optionalDefined } from "./optional/optional";
 
 export function parseEnvVariable(envName: string): Option<string>{
 	const envRawValue = process.env[envName];

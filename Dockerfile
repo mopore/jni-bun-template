@@ -14,7 +14,7 @@ RUN bun install --frozen-lockfile --no-progress
 
 # Lint and run tests
 RUN bun run lint
-RUN LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-core/**/*.spec.ts'
+RUN LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-core/**/*.spec.ts' --exit
 
 
 

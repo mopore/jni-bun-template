@@ -1,6 +1,6 @@
 import winston from "winston";
-import { parseEnvVariable } from "../SharedFunctions.js";
-import { enums } from "../enums/enums.js";
+import { parseEnvVariable } from "../SharedFunctions";
+import { enums } from "../enums/enums";
 
 export const LOG_SETUP_NAME = "LOG_SETUP";
 export enum LogSetup {

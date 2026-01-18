@@ -1,9 +1,9 @@
 import { expect } from "chai";
 import { Worker } from "worker_threads";
-import type { JniResult } from "../src/shared/workers/worker.js";
 import os from "os";
+import type { JniResult } from "../src/shared/workers/worker";
 
-const PATH_TO_WORKER_FILE = "./dist/src/shared/workers/worker.js";
+const PATH_TO_WORKER_FILE = "./src/shared/workers/worker.ts";
 const TOTAL_NO_OF_WORK_ITEMS = 10_000_000 as const;
 
 const devideWork = (workInput: number[], numberOfWorkers: number): number[][] => {

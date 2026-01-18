@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { tryCatch, tryCatchAsync } from "../src/shared/trycatch/trycatch.js";
+import { tryCatch, tryCatchAsync } from "../src/shared/trycatch/trycatch";
 
 const faulty = (): boolean => {
 	throw new Error("Some error");
