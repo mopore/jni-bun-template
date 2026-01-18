@@ -46,4 +46,7 @@ COPY --from=builder /app/src ./src
 
 USER bun
 
-CMD ["bun", "run", "src/index.ts"]
+ENTRYPOINT [ "bun", "run", "src/index.ts" ]
+
+# Default args (none)
+CMD []

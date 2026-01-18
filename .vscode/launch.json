@@ -9,6 +9,7 @@
             "cwd": "${workspaceFolder}",
             "stopOnEntry": false,
             "watchMode": false,
+            "args": ["test arg value from VSC's launch.json"],
             "env": {
                 "TZ": "UTC",
                 "LOG_SETUP": "dev"

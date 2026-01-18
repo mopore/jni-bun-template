@@ -12,8 +12,9 @@ TEST_VAR = "Test value"
 
 To run:
 
-```bash
-bun run index.ts
+```shell
+LOG_SETUP=dev \
+  bun run src/index.ts "test arg value"
 ```
 
 ## Linting
@@ -22,6 +23,7 @@ bun run index.ts
 ## Docker Setup
 
 ### Docker Compose
+Build and run with docker compose setup (see docker-compose.yaml):
 ```shell
 docker compose up --build -d
 ```

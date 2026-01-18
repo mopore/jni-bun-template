@@ -8,7 +8,7 @@ type PackageInfo = {
 	version: string,
 }
 
-export const readVersion = (): Option<string> => {
+export const readVersionOption = (): Option<string> => {
 	try{
 		const rawText =	fs.readFileSync("package.json",  "utf8");
 		const packageInfo = JSON.parse(rawText) as PackageInfo;
@@ -20,7 +20,7 @@ export const readVersion = (): Option<string> => {
 	}
 }
 
-export const readExampleDotEnv = (): Option<string> => {
+export const readExampleDotEnvOption = (): Option<string> => {
 	const testVarRawValue = process.env["TEST_VAR"];
 	let testVarValue: string | undefined;
 	try{
@@ -37,4 +37,15 @@ export const readExampleDotEnv = (): Option<string> => {
 		log.error(errorMessage);
 		process.exit(9);
 	}
+}
+
+export const readCliArgsOption = (): Option<string> => {
+	const args = process.argv.slice(2);
+	
+	if (args.length === 0) {
+		return none();
+	}
+	
+	const combinedArgs = args.join(" ");
+	return optionalDefined(combinedArgs);
 }

@@ -9,3 +9,4 @@ services:
     environment:
       - TZ=UTC
       - LOG_SETUP=prod
+    command: ["test arg value from docker-compose.yaml"]
