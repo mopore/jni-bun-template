@@ -41,6 +41,7 @@ export const enums = {
 		}
 
 		const errMsg = `Could not convert "${value}" to enum value`;
+		console.trace();
 		throw new Error(errMsg);
 	},
 }

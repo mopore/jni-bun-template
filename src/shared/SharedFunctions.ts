@@ -1,21 +1,22 @@
 import { log } from "./logger/log.js";
+import { none, optionalDefined, type Option } from "./optional/optional.js";
 
-export function parseEnvVariable(envName: string): string{
+export function parseEnvVariable(envName: string): Option<string>{
 	const envRawValue = process.env[envName];
-	let envValue: string;
+	let envValue: string | undefined;
 	try {
-		envValue = String(envRawValue);
+		envValue = String(envRawValue ?? "");
 		if (envValue.trim().length === 0 ){
-			throw new Error( `Value for environment variable "${envName} is not set.`);
+			console.error(`Value for environment variable "${envName} is not set.`);
+			return none();
 		}
-		return envValue;
 	}
 	catch {
-		const errorMessage = `Could not parse environment variable for '${envName}'. Please check.`;
-		log.error(errorMessage);
-		log.trace();
-		throw new Error(errorMessage);
+		const errorMessage = `Could not parse environment variable '${envName}'. Please check.`;
+		console.error(errorMessage);
+		return none();
 	}
+	return optionalDefined(envValue);
 }
 
 export const sleepAsync = async (ms: number): Promise<void> => {

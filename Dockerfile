@@ -14,13 +14,17 @@ RUN bun install --frozen-lockfile --no-progress
 # Lint and run tests
 RUN bun run lint
 
+
+
 # ------------------------------------------------------------------------
 # RUNTIME
 # ------------------------------------------------------------------------
 #
 FROM oven/bun:1.3-debian
 
-# Install project specifics
+# # Install project specifics 
+# # Examples adds audio capabilities to runtime container
+#
 # RUN apt-get update \
 #     && apt-get install -y --no-install-recommends \
 #         ffmpeg \
@@ -34,7 +38,9 @@ COPY package.json bun.lock ./
 RUN bun install --production --frozen-lockfile --no-progress
 COPY --from=builder /app/src ./src
 
-# Prep special folders
+# # Prep special folders
+# # Add folders the 'bun' user will not be able to create themself
+#
 # RUN mkdir -p /app/pollyCache \
 #     && chown bun:bun /app/pollyCache
 

@@ -1,9 +1,13 @@
 # jni-bun-template
 
 To install dependencies:
-
 ```bash
 bun install
+```
+
+Prep a `.env` file in the project root:
+```ini
+TEST_VAR = "Test value"
 ```
 
 To run:
@@ -11,13 +15,6 @@ To run:
 ```bash
 bun run index.ts
 ```
-
-
-## Visual Studio Code
-- Install the Bun plugin from oven
-- Install "Bun Scripts"
-- F5 launch script is available including a debugger configuration
-
 
 ## Linting
 - Linting is done via ES Lint run `bun run lint`
@@ -50,3 +47,10 @@ docker buildx build \
   --push \
   .
 ```
+
+## Visual Studio Code Setup
+When running with VSC:
+- Install the Bun plugin from oven
+- Install "Bun Scripts"
+- F5 launch script is available including a debugger configuration
+
