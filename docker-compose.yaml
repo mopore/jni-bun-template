@@ -1,7 +1,7 @@
 services:
-  polly-streamer:
+  jni-bun-template:
     build: .
-    image: jni-home/jni-bun-template:latest
+    image: registry.mopore.org/jni/jni-bun-template:latest
     container_name: jni-bun-template
     env_file:
       - .env

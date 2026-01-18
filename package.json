@@ -7,12 +7,12 @@
   "private": true,
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^9.39.2",
     "@types/bun": "latest",
-    "@typescript-eslint/eslint-plugin": "^8.48.1",
-    "@typescript-eslint/parser": "^8.48.1",
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
     "chai": "^6.2.1",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "mocha": "^11.7.5",
     "testcontainers": "^11.9.0"
   },

@@ -12,14 +12,24 @@ To run:
 bun run index.ts
 ```
 
-## Docker
+
+## Visual Studio Code
+- Install the Bun plugin from oven
+- Install "Bun Scripts"
+- F5 launch script is available including a debugger configuration
+
+
+## Linting
+- Linting is done via ES Lint run `bun run lint`
+
+## Docker Setup
 
 ### Docker Compose
 ```shell
 docker compose up --build -d
 ```
 
-### Multi Architecture
+### Create a Multi Architecture Image for Self-Hosted Registry
 
 Prep docker environment once to provide multi-arch builds:
 ```shell
@@ -27,12 +37,16 @@ docker buildx create --use --name multiarch
 docker buildx inspect --bootstrap
 ```
 
-You will need to have a Container Registry
+Login your registry:
+```shell
+docker login registry.mopore.org
+```
 
+Create and push the image to registry
 ```shell
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
-  -t "jni-home/jni-bun-template:latest" \
+  -t registry.mopore.org/jni/jni-bun-template:latest \
   --push \
   .
 ```
