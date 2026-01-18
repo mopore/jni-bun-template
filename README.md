@@ -20,6 +20,20 @@ LOG_SETUP=dev \
 ## Linting
 - Linting is done via ES Lint run `bun run lint`
 
+
+## Creating an Executable Binary
+Run these commands:
+```shell
+bun build src/index.ts \
+  --compile --outfile jni-bun-template
+
+chmod +x  ./jni-bun-template
+
+LOG_SETUP=dev ./jni-bun-template "input from binary executable"
+```
+Note that this project depends on a `package.json` file in the same directory as the executable.
+
+
 ## Docker Setup
 
 ### Docker Compose
