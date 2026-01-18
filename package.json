@@ -1,6 +1,6 @@
 {
   "name": "jni-bun-template",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Project template for Bun projects w/ linting, VSC integration, docker, tests and sample code.",
   "module": "src/index.ts",
   "type": "module",
@@ -25,7 +25,8 @@
   "scripts": {
     "lint": "bun eslint . --ext .js,.ts,.tsx",
     "test": "LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-core/**/*.spec.ts' --exit",
-    "test:integration": "LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-integration/**/*.spec.ts' --timeout 20000 --exit"
+    "test:integration": "LOG_SETUP=prod TZ=UTC bun --bun mocha 'test-integration/**/*.spec.ts' --timeout 20000 --exit",
+    "docker:build-push": "docker buildx build --platform linux/amd64,linux/arm64 -t registry.mopore.org/jni/$(jq -r .name package.json):v$(jq -r .version package.json) -t registry.mopore.org/jni/$(jq -r .name package.json):latest --push ."
   },
   "dependencies": {
     "winston": "^3.19.0"

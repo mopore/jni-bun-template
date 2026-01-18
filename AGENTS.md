@@ -62,6 +62,11 @@ bun build src/index.ts --compile --outfile <name>
 docker compose up --build -d
 ```
 
+### Build & Push Multi-Arch Docker Image
+```bash
+bun run docker:build-push
+```
+
 ---
 
 ## File Structure
@@ -233,4 +238,5 @@ bun run test                                             # Run core tests
 bun run test:integration                                 # Run integration tests
 LOG_SETUP=prod TZ=UTC bun --bun mocha test-core/x.spec.ts  # Single test
 LOG_SETUP=dev bun run src/index.ts                       # Run app
+bun run docker:build-push                                # Build & push multi-arch image
 ```
