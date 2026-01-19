@@ -17,6 +17,14 @@
 This projects serves as a GitHub template project with Bun. It provides linting, tests, sample code
 and Docker integration.
 
+## Key Features & Architecture
+
+This template is opinionated and enforces strict patterns for production readiness:
+
+- **Strict TypeScript**: Configured with strict rules (e.g., `noUncheckedIndexedAccess`) to prevent runtime errors.
+- **Error Handling**: Uses `Option<T>` (for nullables) and `Result<T,E>` (for operations) monads instead of `null` or `try/catch` blocks.
+- **Logging**: Pre-configured Winston logger with environment-based formatting (`dev` vs `prod`).
+
 ## Usage
 
 Install dependencies:
@@ -27,12 +35,27 @@ bun install
 Prep a `.env` file in the project root:
 ```ini
 TEST_VAR = "Test value"
+TZ = "UTC"
 ```
 
 Run:
 ```shell
 LOG_SETUP=dev \
   bun run src/index.ts "test arg value from cli"
+```
+
+## Testing
+
+### Unit Tests
+Run core unit tests (Mocha + Chai) located in `test-core/`:
+```shell
+bun run test
+```
+
+### Integration Tests
+Run integration tests (using Testcontainers) located in `test-integration/`:
+```shell
+bun run test:integration
 ```
 
 ## Linting

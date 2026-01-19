@@ -26,7 +26,7 @@ describe("await fulfilled promises", async () => {
 	const timoutMs = [100, 200, 300, 400, 500];	
 
 	const promises = input.map((value, index) => {
-		return work(timoutMs[index], value);
+		return work(timoutMs[index] ?? 0, value);
 	});
 
 	const results = await Promise.allSettled(promises);
