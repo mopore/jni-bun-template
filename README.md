@@ -34,8 +34,9 @@ bun install
 
 Prep a `.env` file in the project root:
 ```ini
-TEST_VAR = "Test value"
-TZ = "UTC"
+TEST_VAR='Test value'
+TZ='UTC'
+LOG_SETUP='dev'
 ```
 
 Run:
