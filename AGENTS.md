@@ -208,6 +208,8 @@ it("handles async operation", async () => {
 - `LOG_SETUP`: `dev` or `prod` (required for logger)
 - `TEST_VAR`: Example var loaded from `.env` file
 
+Bun automatically loads `.env` files - no dotenv package needed.
+
 Create `.env` in project root:
 ```ini
 TEST_VAR = "Test value"
