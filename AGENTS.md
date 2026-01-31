@@ -96,15 +96,15 @@ test-integration/             # Integration tests (testcontainers)
 - Final newline in files
 
 ### Imports
-- Use `.js` extension in relative imports (ESM compatibility)
+- No `.js` extension in relative imports (Bun handles resolution)
 - Prefer named imports over default imports
 ```typescript
 // Correct
-import { log } from "./logger/log.js";
-import { Option, none, some } from "./optional/optional.js";
-
-// Wrong - missing .js extension
 import { log } from "./logger/log";
+import { Option, none, some } from "./optional/optional";
+
+// Wrong - don't add .js extension
+import { log } from "./logger/log.js";
 ```
 
 ### Naming Conventions
