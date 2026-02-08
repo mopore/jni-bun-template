@@ -24,7 +24,7 @@ bun install
 
 ### Run
 ```bash
-LOG_SETUP=dev bun run src/index.ts
+bun run src/index.ts
 ```
 
 ### Lint
@@ -44,7 +44,7 @@ bun run test
 
 ### Run Single Test File
 ```bash
-LOG_SETUP=prod TZ=UTC bun --bun mocha test-core/optional.spec.ts
+bun --bun mocha test-core/optional.spec.ts
 ```
 
 ### Run Integration Tests
@@ -238,7 +238,7 @@ bun run lint                                             # Check style
 bun x tsc --noEmit                                       # Type check
 bun run test                                             # Run core tests
 bun run test:integration                                 # Run integration tests
-LOG_SETUP=prod TZ=UTC bun --bun mocha test-core/x.spec.ts  # Single test
-LOG_SETUP=dev bun run src/index.ts                       # Run app
+bun --bun mocha test-core/x.spec.ts                       # Single test
+bun run src/index.ts                                      # Run app
 bun run docker:build-push                                # Build & push multi-arch image
 ```

@@ -41,8 +41,7 @@ LOG_SETUP='dev'
 
 Run:
 ```shell
-LOG_SETUP=dev \
-  bun run src/index.ts "test arg value from cli"
+bun run src/index.ts "test arg value from cli"
 ```
 
 ## Testing
@@ -71,8 +70,10 @@ bun build src/index.ts \
 
 chmod +x  ./jni-bun-template
 
-LOG_SETUP=dev ./jni-bun-template "input from binary executable"
+./jni-bun-template "input from binary executable"
 ```
+Note: Binaries don't auto-load `.env` files. Set required env vars (e.g., `LOG_SETUP`) before running.
+
 Note that this project depends on a `package.json` file in the same directory as the executable.
 
 
