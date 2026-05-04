@@ -131,23 +131,38 @@ Use the provided patterns instead of raw try/catch:
 
 **Option<T> Pattern** (for nullable values):
 ```typescript
-import { Option, none, some, optionalDefined } from "./shared/optional/optional.js";
+import { Option, none, some, optionalDefined, optionalCatch, optionalResolve } from "./shared/optional/optional";
 
-const value = optionalDefined(maybeNull);  // Wraps nullable
-value.unwrapOr(defaultValue);              // Safe default
-value.unwrapExpect("error message");       // Throws with message if none
+const value = optionalDefined(maybeNull);      // Wraps nullable into Option<T>
+const result = optionalCatch(() => riskyOp()); // Returns some(T) on success, none() on throw
+const resolved = await optionalResolve(promise); // Returns some(T) on resolve, none() on reject
+
+value.unwrapOr(defaultValue);                  // Safe default when none
+value.unwrapExpect("error message");            // Throws with message if none
 ```
 
 **Result<T,E> Pattern** (for operations that may fail):
 ```typescript
-import { tryCatch, tryCatchAsync } from "./shared/trycatch/trycatch.js";
+import { tryCatch, tryCatchAsync } from "./shared/trycatch/trycatch";
 
 const { result, error } = tryCatch(() => riskyOperation());
 if (error != null) {
-    // Handle error
+    log.error(`Operation failed: ${error}`);
+    // handle error
 }
 // result is narrowed to T
+
+const { result, error } = await tryCatchAsync(asyncOperation());
 ```
+
+**Rules:**
+- Never use `process.exit()` inside shared/library functions that can return `Option<T>` or `Result<T,E>` — let the caller decide how to handle failure.
+- Use `log.error()` instead of `console.error()` for error messages.
+- Use `log.trace()` instead of `console.trace()` for stack traces (both are available on the `ExtendedLogger`).
+- Never silently swallow errors — always log or propagate them.
+- In `catch` blocks, always narrow the error type before use; use `unknown` as the catch variable type.
+- Prefer returning `none()` / `{ result: null, error }` over throwing when a value is missing or an operation fails in a recoverable way.
+- Reserve `throw` for truly unrecoverable states (e.g., programmer errors, invalid invariants).
 
 ### Async/Await
 - Always use async/await, never raw Promises with `.then()`
