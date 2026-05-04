@@ -62,7 +62,7 @@ export async function mapConcurrentAsync<T, U>(
 				out.push(...results);
 			}
 		} catch (e) {
-			if (firstError !== undefined){
+			if (firstError === undefined){
 				firstError = e;
 			}
 		}

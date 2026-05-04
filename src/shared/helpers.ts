@@ -27,15 +27,16 @@ export const readExampleDotEnvOption = (): Option<string> => {
 		testVarValue = String(testVarRawValue ?? "");
 		if (testVarValue.trim().length === 0) {
 			const errorMessage = `Missing 'TEST_VAR' defined in .env file in project's root.`;
-			console.error(errorMessage);
-			console.trace();
+			log.error(errorMessage);
+			log.trace();
 			return none();
 		}
 		return optionalDefined(testVarValue);
 	} catch (error) {
 		const errorMessage = `INTERNAL ERROR - Could not load from ".env": ${error}`;
 		log.error(errorMessage);
-		process.exit(9);
+		log.trace();
+		return none();
 	}
 }
 
