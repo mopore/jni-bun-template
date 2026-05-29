@@ -62,6 +62,9 @@ bun run test:integration
 ## Linting
 - Linting is done via ES Lint run `bun run lint`
 
+## Extra Security
+`./.bunfig.toml` provides extra security by only installing packages which have a minimum age 
+of 7 days.
 
 ## Creating an Executable Binary
 Run these commands:
