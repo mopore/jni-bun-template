@@ -155,14 +155,50 @@ if (error != null) {
 const { result, error } = await tryCatchAsync(asyncOperation());
 ```
 
+#### Error Logging Pattern (try/catch breadcrumb)
+When you *do* use a try/catch that rethrows, every catch block must do 3 things: (1) `log.error(msg)`
+with context, (2) `log.trace()`, (3) `throw new Error(msg)` wrapping the original error. This builds
+a breadcrumb trail from the error origin up to the entrypoint.
+
+- Never use `process.exit()` in error handling - always throw so errors propagate.
+- Error messages must include the current operation context + the original error.
+- When dealing with domain data, include identifying fields (raw values, keys, identifiers).
+- At the lowest error origin (e.g. `enums.ts`), also `log.error(msg)` + `log.trace()` before throwing.
+
+```typescript
+// Wrapping an operation with context
+try {
+    await riskyOperationAsync();
+} catch (error) {
+    const msg = `Reading config from disk failed: ${error}`;
+    log.error(msg);
+    log.trace();
+    throw new Error(msg);
+}
+
+// With domain data context (include identifying fields)
+try {
+    logSetup = enums.to(LogSetup, rawLogSetup);
+} catch (error) {
+    const msg = `Failed to map LOG_SETUP (raw="${rawLogSetup}"): ${error}`;
+    log.error(msg);
+    log.trace();
+    throw new Error(msg);
+}
+```
+
 **Rules:**
-- Never use `process.exit()` inside shared/library functions that can return `Option<T>` or `Result<T,E>` — let the caller decide how to handle failure.
+- Never use `process.exit()` in error handling - always throw so errors propagate. In particular,
+  never call it inside shared/library functions that can return `Option<T>` or `Result<T,E>`; let
+  the caller decide how to handle failure.
 - Use `log.error()` instead of `console.error()` for error messages.
 - Use `log.trace()` instead of `console.trace()` for stack traces (both are available on the `ExtendedLogger`).
 - Never silently swallow errors — always log or propagate them.
 - In `catch` blocks, always narrow the error type before use; use `unknown` as the catch variable type.
-- Prefer returning `none()` / `{ result: null, error }` over throwing when a value is missing or an operation fails in a recoverable way.
-- Reserve `throw` for truly unrecoverable states (e.g., programmer errors, invalid invariants).
+- Choose the path that fits the failure: recoverable failures return `none()` /
+  `{ result: null, error }`; rethrowing or unrecoverable failures apply the breadcrumb pattern above
+  (`log.error` + `log.trace` + `throw new Error` wrapping the original).
+- Reserve `throw` for rethrowing with context or truly unrecoverable states (e.g., programmer errors, invalid invariants).
 
 ### Async/Await
 - Always use async/await, never raw Promises with `.then()`
