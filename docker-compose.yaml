@@ -1,7 +1,7 @@
 services:
   jni-bun-template:
     build: .
-    image: registry.mopore.org/jni/jni-bun-template:latest
+    image: forgejo.mopore.org/mopore/jni-bun-template:latest
     container_name: jni-bun-template
     env_file:
       - .env
